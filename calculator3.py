@@ -1,3 +1,14 @@
+calculations = []
+
+def record_history(args):
+    calculations.append(args)
+
+def history():
+    if calculations == []:
+        print("No past calculations to show")
+    else:
+        for i in calculations:
+            print(i)
 def add(a,b):
   return a+b
   
@@ -70,6 +81,13 @@ def select_op(choice):
       print(num1, "%", num2, "=", remainder(num1, num2))
     else:
       print("Something Went Wrong")
+         
+    last_calculation =  "{0} {1} {2} = {3}".format(num1, choice, num2, result) 
+    print(last_calculation )
+    record_history(last_calculation)
+
+  elif choice == '?':
+    history() 
   else:
     print("Unrecognized operation")
     
@@ -83,7 +101,7 @@ while True:
   print("6.Remainder: % ")
   print("7.Terminate: # ")
   print("8.Reset    : $ ")
-  
+  print("9.History  : ? ")
   # take input from the user
   choice = input("Enter choice(+,-,*,/,^,%,#,$): ")
   print(choice)
